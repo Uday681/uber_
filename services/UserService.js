@@ -1,10 +1,10 @@
 // import  userModel  from "../";
-import UserModel from "../models/userModel.js"
+import userModel from "../models/UserModel.js"
 
 // Create a new user
 
 export const createUser = async (userData) => {
-    const newUser = new UserModel(userData);
+    const newUser = new userModel(userData);
     try {
         const savedUser = await newUser.save();
         console.log(`userData : ${savedUser}`);

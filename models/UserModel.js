@@ -33,12 +33,15 @@ userSchema.methods.generateAuthToken = function(){
     if (!process.env.JWT_SECRET_KEY) {
         throw new Error("JWT_SECRET_KEY is not defined");
     }
-    const token = Jwt.sign({_id: this._id}, process.env.JWT_SECRET_KEY);
+    const token = Jwt.sign({_id: this._id}, process.env.JWT_SECRET_KEY,{expiresIn : '24h'});
     return token;
 }
 userSchema.methods.comparePassword = async function(password) {
-    const isMatch = await bcrypt.compare(password, this.password);
-    return isMatch
+    try {
+        return await bcrypt.compare(password, this.password);
+    } catch (error) {
+        throw new Error(error);
+    }
 }
 
 userSchema.statics.hashPassword = async function(password){

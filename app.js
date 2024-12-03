@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
-import userRoutes from './routes/UserRoutes.js';
+import userRoutes from './Routes/UserRoutes.js';
 
 // Initialize environment variables
 dotenv.config();
