@@ -3,6 +3,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import userRoutes from './Routes/UserRoutes.js';
+import captainRoutes from "./Routes/CaptionRouters.js"
 
 // Initialize environment variables
 dotenv.config();
@@ -22,7 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/user', userRoutes);
-// app.use('/captains', captainRoutes);
+app.use('/captains', captainRoutes);
 // app.use('/maps', mapsRoutes);
 // app.use('/rides', rideRoutes);
 
